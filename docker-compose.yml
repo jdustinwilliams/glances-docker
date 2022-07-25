@@ -4,12 +4,14 @@ services:
   glances:
     image: nicolargo/glances:latest-alpine
     container_name: glances
-    restart: always
+    restart: unless-stopped
     pid: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - "GLANCES_OPT=-w"
+#    ports:
+#      - 61208:61208
 
 networks:
   default:
